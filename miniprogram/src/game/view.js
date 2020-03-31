@@ -1,0 +1,40 @@
+import GamePage from '../pages/gamepage.js';
+import GameOverPage from '../pages/gameoverpage.js';
+
+class view {
+    constructor(){
+
+    }
+
+    showGameOverPage(){
+        this.gamePage.hide();
+        this.gameOverPage.show();
+    }
+
+    showGamePage(){
+        this.gameOverPage.hide();
+        this.gamePage.restart();
+        this.gamePage.show()
+    }
+
+    restartGame(){
+        console.log('gamePage',this.gamePage);
+        this.gamePage.restart();
+    }
+
+    initGameOverPage (callbacks) {
+        this.gameOverPage = new GameOverPage(callbacks);
+        this.gameOverPage.init({
+            scene: this.gamePage.scene
+        });
+    }
+
+    initGamePage (callbacks){
+        this.gamePage = new GamePage(callbacks);
+        this.gamePage.init();
+    }
+
+
+}
+
+export default new view()
